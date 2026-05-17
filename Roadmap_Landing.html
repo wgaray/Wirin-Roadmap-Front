@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WirinMate | Evolutionary Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wirin-red: #FF4D4D;
+            --wirin-blue: #3B82F6;
+            --wirin-grey: #6B7280;
+            --wirin-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--wirin-bg);
+            color: #111827;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar-container {
+            height: 10px;
+            background: #F3F4F6;
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            transition: width 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(90deg, var(--wirin-blue), var(--wirin-red));
+        }
+
+        .phase-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .phase-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.15);
+        }
+
+        .tick {
+            color: #10B981;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .logo-container img {
+            max-width: 220px;
+        }
+
+        .waveform-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: -1;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--wirin-blue), var(--wirin-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pill-button {
+            padding: 8px 32px;
+            border-radius: 9999px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .pill-blue-red {
+            background: linear-gradient(90deg, #3B82F6 0%, #3B82F6 40%, #FF4D4D 60%, #FF4D4D 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="p-6 md:p-12 lg:p-20">
+    <!-- Waveform Background Decoration -->
+    <div class="waveform-footer">
+        <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-full preserve-3d">
+            <path fill="rgba(59, 130, 246, 0.1)" d="M0,160L48,176C96,192,192,224,288,229.3C384,235,480,213,576,186.7C672,160,768,128,864,133.3C960,139,1056,181,1152,197.3C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            <path fill="rgba(255, 77, 77, 0.05)" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,218.7C672,213,768,171,864,149.3C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <header class="flex flex-col items-center mb-20">
+        <div class="logo-container mb-8 floating">
+            <img src="Wirin-Front/src/assets/wirin-logo.svg" alt="WirinMate Logo" class="mx-auto" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='block'">
+            <h1 id="logo-text" class="hidden text-5xl font-black tracking-tighter text-gray-900">wirin<span class="text-[#FF4D4D]">mate</span></h1>
+        </div>
+        <div class="text-center">
+            <h2 class="text-xs font-bold tracking-[0.5em] text-gray-400 uppercase mb-4">Digital Audio Workstation</h2>
+            <div class="flex justify-center space-x-4 text-sm font-bold uppercase tracking-widest mb-8">
+                <span class="text-[#3B82F6]">Your DAW.</span>
+                <span class="text-gray-400">Your Assistant.</span>
+                <span class="text-[#FF4D4D]">Your Sound.</span>
+            </div>
+            <div class="pill-button pill-blue-red inline-block mb-12">Evolutionary Roadmap</div>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20 max-w-7xl mx-auto">
+        <!-- Progress Bars -->
+        <div class="glass p-10 flex flex-col justify-center">
+            <h3 class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-4 font-extrabold">Backend Core</h3>
+            <div class="flex justify-between items-end mb-3">
+                <span class="text-4xl font-black text-gray-900">95%</span>
+                <span class="text-xs font-bold text-blue-500 uppercase">C++ Engine</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" style="width: 95%"></div>
+            </div>
+        </div>
+
+        <div class="glass p-10 flex flex-col justify-center">
+            <h3 class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-4 font-extrabold">FFI Bridge</h3>
+            <div class="flex justify-between items-end mb-3">
+                <span class="text-4xl font-black text-gray-900">93%</span>
+                <span class="text-xs font-bold text-red-500 uppercase">Rust / CXX</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" style="width: 93%"></div>
+            </div>
+        </div>
+
+        <div class="glass p-10 flex flex-col justify-center">
+            <h3 class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-4 font-extrabold">Frontend UI</h3>
+            <div class="flex justify-between items-end mb-3">
+                <span class="text-4xl font-black text-gray-900">72%</span>
+                <span class="text-xs font-bold text-gray-600 uppercase">Tauri / React</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" style="width: 72%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Highlights — last sprint's shipped work -->
+    <section class="max-w-7xl mx-auto mb-20">
+        <h2 class="text-xs font-black tracking-[0.4em] text-gray-400 uppercase mb-2 text-center">Recent Highlights</h2>
+        <p class="text-center text-sm text-gray-500 font-medium mb-10">Shipped in the last sprint</p>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="glass p-5 text-center">
+                <div class="text-[10px] font-black tracking-[0.2em] text-blue-500 uppercase mb-2">Engine</div>
+                <div class="text-sm font-extrabold text-gray-900 leading-tight">Backend Undo / Redo Bridge</div>
+                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2">Memento Pattern</div>
+            </div>
+            <div class="glass p-5 text-center">
+                <div class="text-[10px] font-black tracking-[0.2em] text-red-500 uppercase mb-2">Automation</div>
+                <div class="text-sm font-extrabold text-gray-900 leading-tight">Sample-Accurate W / R Engine</div>
+                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2">Vol · Pan · Mute · Solo</div>
+            </div>
+            <div class="glass p-5 text-center">
+                <div class="text-[10px] font-black tracking-[0.2em] text-blue-500 uppercase mb-2">Editor</div>
+                <div class="text-sm font-extrabold text-gray-900 leading-tight">Piano Roll + Velocity Lane</div>
+                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2">WebGPU Rendered</div>
+            </div>
+            <div class="glass p-5 text-center">
+                <div class="text-[10px] font-black tracking-[0.2em] text-red-500 uppercase mb-2">Tracks</div>
+                <div class="text-sm font-extrabold text-gray-900 leading-tight">FX & Group Track Types</div>
+                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2">VCA-Style Routing</div>
+            </div>
+            <div class="glass p-5 text-center">
+                <div class="text-[10px] font-black tracking-[0.2em] text-blue-500 uppercase mb-2">Editing</div>
+                <div class="text-sm font-extrabold text-gray-900 leading-tight">E2E Resize (Audio + MIDI)</div>
+                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2">Sample-Accurate</div>
+            </div>
+            <div class="glass p-5 text-center">
+                <div class="text-[10px] font-black tracking-[0.2em] text-red-500 uppercase mb-2">Telemetry</div>
+                <div class="text-sm font-extrabold text-gray-900 leading-tight">WIRN Protocol v2</div>
+                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2">+ Per-Track State</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto">
+        <h2 class="text-4xl font-black mb-12 text-gray-900 flex items-center">
+            <span class="w-12 h-1 bg-gradient-to-r from-blue-500 to-red-500 mr-6"></span>
+            Project Milestones
+        </h2>
+
+        <div class="space-y-8">
+            <!-- Phase 0 -->
+            <div class="glass p-10 phase-card">
+                <div class="flex items-center mb-6">
+                    <span class="bg-green-100 text-green-600 px-4 py-1 rounded-full text-[10px] font-black mr-4 uppercase tracking-tighter">Completed</span>
+                    <h3 class="text-2xl font-extrabold text-gray-900">Phase 0: The Modernized Core</h3>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 text-sm text-gray-600 font-medium">
+                    <li><span class="tick">✔</span> Modernized Legacy C++ Libraries (PBD, Temporal)</li>
+                    <li><span class="tick">✔</span> Rust/CXX Bridge implementation for Tauri</li>
+                    <li><span class="tick">✔</span> Modular Bootloader (Stable Windows Startup)</li>
+                    <li><span class="tick">✔</span> PortAudio/ASIO Backend support</li>
+                    <li class="opacity-40"><span class="mr-2">•</span> JUCE 8 Multi-Backend Integration (Long-term)</li>
+                    <li><span class="tick">✔</span> Hardware Port Metadata & Descriptive Naming</li>
+                    <li><span class="tick">✔</span> Stable Hardware GUID Matching</li>
+                    <li><span class="tick">✔</span> Robust Session Isolation & Path Loading</li>
+                </ul>
+            </div>
+
+            <!-- Phase 1 -->
+            <div class="glass p-10 phase-card border-l-4 border-blue-500">
+                <div class="flex items-center mb-6">
+                    <span class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-[10px] font-black mr-4 uppercase tracking-tighter">In Progress</span>
+                    <h3 class="text-2xl font-extrabold text-gray-900">Phase 1: Vintage Daw</h3>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 text-sm text-gray-600 font-medium">
+                    <li><span class="tick">✔</span> Multi-Track Audio Recording & Waveform Growth</li>
+                    <li><span class="tick">✔</span> MIDI Handling, Recording & SMF Integration</li>
+                    <li><span class="tick">✔</span> Sample-Accurate Region Resizing (Audio/MIDI)</li>
+                    <li><span class="tick">✔</span> Session Handler & Project Persistence</li>
+                    <li><span class="tick">✔</span> Mixer Engine & Signal Routing</li>
+                    <li><span class="tick">✔</span> Non-Destructive Audio & MIDI Editing</li>
+                    <li><span class="tick">✔</span> MIDI Velocity & Note Inspector (Piano Roll + Velocity Lane)</li>
+                    <li><span class="tick">✔</span> Backend Undo/Redo (Memento Command Pattern)</li>
+                    <li><span class="tick">✔</span> Audio File Import & Drag-Drop</li>
+                    <li><span class="tick">✔</span> Metronome Handling</li>
+                    <li><span class="tick">✔</span> Audio / MIDI / FX / Group Track Types (VCA Groups)</li>
+                    <li><span class="tick">✔</span> Master Stereo Bus Sync</li>
+                    <li class="text-blue-500 font-bold">• Automation System — W/R Engine, GPU Overlay, Touch/Latch (In Progress)</li>
+                    <li class="text-blue-500 font-bold">• Global Tempo & Time-Signature Maps (Planning)</li>
+                    <li class="text-blue-500 font-bold">• High-Fidelity Audio Export / Bouncing (FFI Pending)</li>
+                    <li class="text-blue-500 font-bold">• Project "Snapshots" & Version Branching</li>
+                </ul>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="glass p-10 phase-card border-l-4 border-blue-500">
+                <div class="flex items-center mb-6">
+                    <span class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-[10px] font-black mr-4 uppercase tracking-tighter">In Progress</span>
+                    <h3 class="text-2xl font-extrabold text-gray-900">Phase 2: Performance Mastery</h3>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 text-sm text-gray-600 font-medium">
+                    <li><span class="tick">✔</span> High-Frequency (8ms) Telemetry Loop</li>
+                    <li><span class="tick">✔</span> Lock-Free Peak Data Retrieval via CXX</li>
+                    <li><span class="tick">✔</span> ID-based Telemetry (Robust Mapping)</li>
+                    <li><span class="tick">✔</span> WebGPU VU Meters (120fps Pipeline)</li>
+                    <li><span class="tick">✔</span> Binary-Streamed Telemetry (Zero-Copy)</li>
+                    <li><span class="tick">✔</span> Playhead Synchronization Optimization</li>
+                    <li><span class="tick">✔</span> WIRN Binary Protocol v2 (Extended Per-Track State)</li>
+                    <li><span class="tick">✔</span> Shared WebGPU Device & Render-Pass Batching</li>
+                    <li class="text-blue-500 font-bold">• Sub-frame Interpolation (120fps+)</li>
+                    <li class="text-blue-500 font-bold">• Zero-Lag Audio Path Buffering</li>
+                    <li class="text-blue-500 font-bold">• Cross-Process Audio Latency Profiler</li>
+                </ul>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="glass p-10 phase-card opacity-70 grayscale hover:grayscale-0 transition-all">
+                <div class="flex items-center mb-6">
+                    <span class="bg-gray-100 text-gray-600 px-4 py-1 rounded-full text-[10px] font-black mr-4 uppercase tracking-tighter">Future Vision</span>
+                    <h3 class="text-2xl font-extrabold text-gray-900">Phase 3: VST3/LV2 Hosting & Plugin Browser</h3>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 text-sm text-gray-600 font-medium">
+                    <li>• High-Performance Plugin Scanner</li>
+                    <li>• VST3 / LV2 Hosting Engine</li>
+                    <li>• Plugin Library Handling & Metadata</li>
+                    <li>• VST Instruments Visualization</li>
+                    <li>• VST Inserts Audio & UI Integration</li>
+                    <li>• Plugin Sandboxing (Crash Protection)</li>
+                    <li class="opacity-50">• Waveform Summary Serialization</li>
+                </ul>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="glass p-10 phase-card opacity-70 grayscale hover:grayscale-0 transition-all">
+                <div class="flex items-center mb-6">
+                    <span class="bg-gray-100 text-gray-600 px-4 py-1 rounded-full text-[10px] font-black mr-4 uppercase tracking-tighter">Future Vision</span>
+                    <h3 class="text-2xl font-extrabold text-gray-900">Phase 4: The Visual Rebirth</h3>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 text-sm text-gray-600 font-medium">
+                    <li>• Redesign of Splash Screen & New Start Menu</li>
+                    <li>• Audio Connections & Hardware Routing Menu</li>
+                    <li>• Global Settings & Configuration Redesign</li>
+                    <li>• Mixer Console & Timeline Grid Overhaul</li>
+                    <li>• Custom Theme Engine (Dark/Light Mode)</li>
+                    <li>• Dynamic Motion System (Framer Motion)</li>
+                    <li>• Spectral Mixer Overlay (Real-time FFT)</li>
+                    <li>• Surround / Multichannel Pan Visualizer</li>
+                </ul>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="glass p-10 phase-card opacity-50 grayscale hover:grayscale-0 transition-all">
+                <div class="flex items-center mb-6">
+                    <span class="bg-gray-100 text-gray-600 px-4 py-1 rounded-full text-[10px] font-black mr-4 uppercase tracking-tighter">Future Vision</span>
+                    <h3 class="text-2xl font-extrabold text-gray-900">Phase 5: AI-Driven DAW</h3>
+                </div>
+                <p class="text-sm text-gray-500 leading-relaxed max-w-2xl font-medium">
+                    Semantic Session Context, Natural Language Routing, AI-Assisted Plugin Scanning, Natural Language Mixing, AI-Assisted DSP chain creation, Spectral Stage Visualization, and Pencil MCP Integration.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto mt-24">
+        <h2 class="text-xs font-black tracking-[0.4em] text-gray-400 uppercase mb-10 text-center">Technical Spotlights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass p-8">
+                <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h4 class="text-lg font-black text-gray-900 mb-3">120FPS WebGPU</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-medium">Unified graphics pipeline batch-rendering all waveforms, meters, playhead and automation lanes through a single shared GPU device.</p>
+            </div>
+            <div class="glass p-8">
+                <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                </div>
+                <h4 class="text-lg font-black text-gray-900 mb-3">MIDI Precision</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-medium">Native SMF integration with microsecond-accurate event scheduling, full piano-roll editor and a dedicated velocity-lane GPU renderer.</p>
+            </div>
+            <div class="glass p-8">
+                <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                </div>
+                <h4 class="text-lg font-black text-gray-900 mb-3">ID-Sync Telemetry</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-medium">WIRN Binary Protocol v2 streams per-track gain, pan, mute, solo and automation state with zero-copy decoding under 0.1ms per frame.</p>
+            </div>
+            <div class="glass p-8">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
+                </div>
+                <h4 class="text-lg font-black text-gray-900 mb-3">Sample-Accurate Undo</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-medium">Backend Memento-Command engine wires every region, mix and automation edit into a single transactional undo/redo stack — Ardour-grade reliability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Matrix -->
+    <section class="max-w-6xl mx-auto mt-24">
+        <h2 class="text-xs font-black tracking-[0.4em] text-gray-400 uppercase mb-2 text-center">Platform Matrix</h2>
+        <p class="text-center text-sm text-gray-500 font-medium mb-10">Current support across the engine, FFI and frontend layers</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Windows -->
+            <div class="glass p-8 border-l-4 border-green-500">
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-xl font-black text-gray-900">Windows 11</h4>
+                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Primary</span>
+                </div>
+                <div class="space-y-2 text-xs font-medium text-gray-600">
+                    <div class="flex justify-between"><span>C++ Engine</span><span class="text-green-600 font-black">● Stable</span></div>
+                    <div class="flex justify-between"><span>ASIO / PortAudio</span><span class="text-green-600 font-black">● Stable</span></div>
+                    <div class="flex justify-between"><span>Tauri / WebGPU UI</span><span class="text-green-600 font-black">● Stable</span></div>
+                    <div class="flex justify-between"><span>MIDI I/O</span><span class="text-green-600 font-black">● Stable</span></div>
+                    <div class="flex justify-between"><span>Installer / Bootloader</span><span class="text-green-600 font-black">● Stable</span></div>
+                </div>
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4">Daily development target</p>
+            </div>
+            <!-- macOS -->
+            <div class="glass p-8 border-l-4 border-yellow-500">
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-xl font-black text-gray-900">macOS</h4>
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Planned</span>
+                </div>
+                <div class="space-y-2 text-xs font-medium text-gray-600">
+                    <div class="flex justify-between"><span>C++ Engine</span><span class="text-yellow-600 font-black">◐ Buildable</span></div>
+                    <div class="flex justify-between"><span>CoreAudio Backend</span><span class="text-yellow-600 font-black">◐ Via JUCE 8</span></div>
+                    <div class="flex justify-between"><span>Tauri / WebGPU UI</span><span class="text-green-600 font-black">● Cross-Platform</span></div>
+                    <div class="flex justify-between"><span>MIDI I/O</span><span class="text-yellow-600 font-black">◐ Pending QA</span></div>
+                    <div class="flex justify-between"><span>Universal Binary</span><span class="text-gray-400 font-black">○ Future</span></div>
+                </div>
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4">Targeted alongside JUCE 8 integration</p>
+            </div>
+            <!-- Linux -->
+            <div class="glass p-8 border-l-4 border-gray-400">
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-xl font-black text-gray-900">Linux</h4>
+                    <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Future</span>
+                </div>
+                <div class="space-y-2 text-xs font-medium text-gray-600">
+                    <div class="flex justify-between"><span>C++ Engine</span><span class="text-yellow-600 font-black">◐ Buildable</span></div>
+                    <div class="flex justify-between"><span>ALSA / JACK</span><span class="text-gray-400 font-black">○ Future</span></div>
+                    <div class="flex justify-between"><span>Tauri / WebGPU UI</span><span class="text-green-600 font-black">● Cross-Platform</span></div>
+                    <div class="flex justify-between"><span>MIDI I/O</span><span class="text-gray-400 font-black">○ Future</span></div>
+                    <div class="flex justify-between"><span>AppImage / Flatpak</span><span class="text-gray-400 font-black">○ Future</span></div>
+                </div>
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4">Inherits from Ardour roots — opt-in</p>
+            </div>
+        </div>
+        <div class="flex justify-center items-center space-x-8 mt-8 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+            <span><span class="text-green-600">●</span> Stable</span>
+            <span><span class="text-yellow-600">◐</span> In Progress</span>
+            <span><span class="text-gray-400">○</span> Planned</span>
+        </div>
+    </section>
+
+    <footer class="mt-32 pb-20 text-center">
+        <div class="flex justify-center space-x-6 mb-8">
+            <div class="w-10 h-10 glass flex items-center justify-center">
+                <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.341-3.369-1.341-.454-1.152-1.11-1.459-1.11-1.459-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"></path></svg>
+            </div>
+            <div class="w-10 h-10 glass flex items-center justify-center">
+                <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+            </div>
+        </div>
+        <div class="mb-10">
+            <p class="text-[10px] font-black text-gray-300 uppercase tracking-[0.5em] mb-2">WirinMate // Engineering</p>
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">A product by <span class="text-gray-900">Marlene</span></p>
+        </div>
+        <div class="mb-8">
+            <p class="text-xs text-gray-500 font-medium italic">"Designed for the future of sound by William Garay"</p>
+            <p class="text-[9px] font-black text-gray-400 uppercase tracking-tighter mt-1">Founder & CEO // Marlene</p>
+        </div>
+        <p class="text-xs text-gray-400 font-bold tracking-widest">&copy; 2026 Marlene Software. Built for Speed. Designed for Sound.</p>
+    </footer>
+</body>
+
+</html>
